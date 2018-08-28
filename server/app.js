@@ -4,7 +4,7 @@ const graphqlHTTP = require('express-graphql');
 const schema = require('./schema/schema');
 
 const app = express();
-mongoose.connect('mongodb://steve:steve123@ds235022.mlab.com:35022/gql-spy')
+mongoose.connect('mongodb://steve:steve123@ds235022.mlab.com:35022/gql-spy', {useNewUrlParser: true})
 mongoose.connection.once('open', () => {
     console.log('we are connected to mongoose')
 })
