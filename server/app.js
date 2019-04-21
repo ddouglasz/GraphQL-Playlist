@@ -3,16 +3,15 @@ const mongoose = require('mongoose');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./schema/schema');
 const cors = require('cors')
-require('dotenv').config()
+// const dotenv = require('dotenv');
+require('dotenv').config({ path: `${process.cwd()}/../.env` })
 
-
+// dotenv.config();
 const app = express();
-
+console.log('******', process.cwd() + '../.env')
 //allow cross-origin requests
 app.use(cors());
-// const connectionStr = process.env.MONGODB_URL;
-const connectionStr = 'mongodb://steve:steve123@ds235022.mlab.com:35022/gql-spy';
-console.log('*****', connectionStr)
+const connectionStr = process.env.REACT_APP_MONGODB_URL;
 mongoose.connect(connectionStr, {useNewUrlParser: true})
 mongoose.connection.once('open', () => {
     console.log('we are connected to mongoose')
